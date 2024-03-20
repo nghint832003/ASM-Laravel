@@ -48,14 +48,14 @@ class ImageController extends Controller
         return redirect()->route('list-image');
     }
 
-    public function edit(ImageRequest $request,$id){
+    public function edit(Request $request,$id){
         $image = Image::where('id',$id)->first();
         return view('admin.image.edit',compact('image'));
     }
 
-    public function handleEdit(ImageRequest $request,$id){
-        if($request->isMethod('POST')){
-            $params = $request->except('_token');
+    public function handleEdit(Request $request,$id){
+
+            $params = $request->except('_token','_method');
             if($request->hasFile('img1') && $request->hasFile('img2') && $request->hasFile('img3') && $request->hasFile('img4')){
                 $image1 = $request->file('img1');
                 $image2 = $request->file('img2');
@@ -73,7 +73,7 @@ class ImageController extends Controller
                 $uploadFile4 =$image4->move(public_path('uploads'),$params['img4']);
             }
             $result = Image::where('id',$id)->update($params);
-        }
+
 
         return redirect()->route('list-image');
     }

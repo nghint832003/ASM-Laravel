@@ -2,6 +2,8 @@
 @section('content')
     <form action="{{ route('handleEdit-image',['id'=>$image->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
+
         <div class="form-group">
             <label for="" class="form-label">Image 1</label>
             <input type="file" class="form-control" name="img1" value="{{ $image->img1 }}">

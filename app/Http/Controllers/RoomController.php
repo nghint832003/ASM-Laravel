@@ -19,12 +19,14 @@ class RoomController extends Controller
                     ->join('image','room.id_image','=','image.id')
                     ->select('room.*','image.*')
                     ->get();
+
         return view('customer.index',compact('room'));
     }
 
     public function add(){
         $room_type = DB::table('room_type')->select('id','name')->get();
         $image = DB::table('image')->select('id')->get();
+
         return view('admin.room.add',compact('room_type','image'));
     }
 
@@ -37,18 +39,16 @@ class RoomController extends Controller
         return redirect()->route('list-room');
     }
 
-    public function edit(RoomRequest $request,$id){
+    public function edit(Request $request,$id){
         $room = Room::where('id',$id)->first();
         $room_type = DB::table('room_type')->select('id','name')->get();
         $image = DB::table('image')->select('id')->get();
         return view('admin.room.edit',compact('room','room_type','image'));
     }
 
-    public function handleEdit(RoomRequest $request,$id){
-        if($request->isMethod('POST')){
-            $params = $request->except('_token');
-            $result = Room::where('id',$id)->update($params);
-        }
+    public function handleEdit(Request $request,$id){
+        $params = $request->except('_token','_method');
+        $result = Room::where('id',$id)->update($params);
 
         return redirect()->route('list-room');
     }

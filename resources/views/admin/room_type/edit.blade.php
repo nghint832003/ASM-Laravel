@@ -2,6 +2,8 @@
 @section('content')
 <form action="{{ route('handleEdit-roomtype',['id'=>$room_type->id]) }}" method="POST" enctype="multipart/form-data">
     @csrf
+    @method('PUT')
+
     <label for="">Name</label>
     <input class="form-control" type="text" name="name" value="{{ $room_type->name }}">
     <label for="">Số lượng người</label>

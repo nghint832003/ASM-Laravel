@@ -8,6 +8,12 @@
     <script src="https://kit.fontawesome.com/a4c378ce73.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Document</title>
+    <style>
+        a{
+            text-decoration: none;
+            color: black;
+        }
+    </style>
 </head>
 <body>
 
@@ -16,45 +22,45 @@
                 <nav  class="col-xl-3">
                     <ul class="mcd-menu">
                         <li>
-                            <a href="">
+                            <a href="{{ route('infor-room') }}">
                                 <i class="fa fa-home"></i>
                                 <strong>Home</strong>
                                 {{-- <small>sweet home</small> --}}
                             </a>
                         </li>
                         <li>
-                            <a href="" class="active">
+                            <a href="{{ route('list-room') }}" class="active">
                                 <i class="fa fa-edit"></i>
-                                <strong>About us</strong>
+                                <strong>Room</strong>
                                 {{-- <small>sweet home</small> --}}
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="{{ route('list-roomtype') }}">
                                 <i class="fa fa-gift"></i>
-                                <strong>Features</strong>
+                                <strong>Roomtype</strong>
                                 {{-- <small>sweet home</small> --}}
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="{{ route('list-image') }}">
                                 <i class="fa fa-globe"></i>
-                                <strong>News</strong>
+                                <strong>Image</strong>
                                 {{-- <small>sweet home</small> --}}
                             </a>
                         </li>
 
-                        <li>
+                        {{-- <li>
                             <a href="">
                                 <i class="fa fa-comments-o"></i>
-                                <strong>Blog</strong>
-                                {{-- <small>what they say</small> --}}
+                                <strong>Bill</strong>
+                                <small>what they say</small>
                             </a>
                             <ul>
                                 <li><a href="#"><i class="fa fa-globe"></i>Mission</a></li>
                                 <li>
                                     <a href="#"><i class="fa fa-group"></i>Our Team</a>
-                                    {{-- <ul>
+                                    <ul>
                                         <li><a href="#"><i class="fa fa-female"></i>Leyla Sparks</a></li>
                                         <li>
                                             <a href="#"><i class="fa fa-male"></i>Gleb Ismailov</a>
@@ -64,26 +70,20 @@
                                             </ul>
                                         </li>
                                         <li><a href="#"><i class="fa fa-female"></i>Viktoria Gibbers2</a></li>
-                                    </ul> --}}
+                                    </ul>
                                 </li>
                                 <li><a href="#"><i class="fa fa-trophy"></i>Rewards</a></li>
                                 <li><a href="#"><i class="fa fa-certificate"></i>Certificates</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <li>
-                            <a href="">
+                            <a href="{{ route('list-bill') }}">
                                 <i class="fa fa-picture-o"></i>
-                                <strong>Portfolio</strong>
+                                <strong>Bill</strong>
                                 {{-- <small>sweet home</small> --}}
                             </a>
                         </li>
-                        <li>
-                            <a href="">
-                                <i class="fa fa-envelope-o"></i>
-                                <strong>Contacts</strong>
-                                {{-- <small>drop a line</small> --}}
-                            </a>
-                        </li>
+
                         <li class="float">
                             <a class="search">
                                 <input type="text" value="search ...">

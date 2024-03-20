@@ -2,6 +2,7 @@
 @section('content')
     <form action="{{ route('handleEdit-room',['id'=>$room->id]) }}" class="form-inline" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div class="form-group">
             <label for="">Name</label>
             <input type="text" class="form-control" name="name" value="{{ $room->name }}">

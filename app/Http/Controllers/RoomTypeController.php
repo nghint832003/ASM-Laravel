@@ -29,16 +29,14 @@ class RoomTypeController extends Controller
         return redirect()->route('list-roomtype');
     }
 
-    public function edit(RoomtypeRequest $request,$id){
+    public function edit(Request $request,$id){
         $room_type = Roomtype::where('id',$id)->first();
         return view('admin.room_type.edit',compact('room_type'));
     }
 
-    public function handleEdit(RoomtypeRequest $request,$id){
-        if($request->isMethod('POST')){
-            $params = $request->except('_token');
-            $result = Roomtype::where('id',$id)->update($params);
-        }
+    public function handleEdit(Request $request,$id){
+        $params = $request->except('_token','_method');
+        $result = Roomtype::where('id',$id)->update($params);
 
         return redirect()->route('list-roomtype');
     }

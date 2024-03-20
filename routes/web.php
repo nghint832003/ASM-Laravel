@@ -40,7 +40,7 @@ Route::prefix('admin')->group(function(){
     Route::get('room/add',[App\Http\Controllers\RoomController::class,'add'])->name('add-room');
     Route::post('room/add',[App\Http\Controllers\RoomController::class,'handleAdd'])->name('handleAdd-room');
     Route::get('room/edit/{id}',[App\Http\Controllers\RoomController::class,'edit'])->name('edit-room');
-    Route::post('room/edit/{id}',[App\Http\Controllers\RoomController::class,'handleEdit'])->name('handleEdit-room');
+    Route::put('room/edit/{id}',[App\Http\Controllers\RoomController::class,'handleEdit'])->name('handleEdit-room');
     Route::get('room/delete/{id}',[App\Http\Controllers\RoomController::class,'delete'])->name('delete-room');
 
     Route::get('bill/list',[App\Http\Controllers\BillController::class,'list'])->name('list-bill');
