@@ -21,28 +21,17 @@ class ImageController extends Controller
         return view('admin.image.add');
     }
 
-    public function handleAdd(ImageRequest $request){
+    public function handleAdd(Request $request){
         if($request->isMethod('POST')){
-            $params = $request->except('_token');
-            if($request->hasFile('img1') || $request->hasFile('img2') || $request->hasFile('img3') || $request->hasFile('img4')){
-                $image1 = $request->file('img1');
-                $image2 = $request->file('img2');
-                $image3 = $request->file('img3');
-                $image4 = $request->file('img4');
-
-                $params['img1'] = time() . '_' . $image1->getClientOriginalName();
-                $params['img2'] = time() . '_' . $image2->getClientOriginalName();
-                $params['img3'] = time() . '_' . $image3->getClientOriginalName();
-                $params['img4'] = time() . '_' . $image4->getClientOriginalName();
-
-                $uploadFile1 = $image1->move(public_path('uploads'),$params['img1']);
-                $uploadFile2 =$image2->move(public_path('uploads',),$params['img2']);
-                $uploadFile3 =$image3->move(public_path('uploads'),$params['img3']);
-                $uploadFile4 =$image4->move(public_path('uploads'),$params['img4']);
-
+            if($request->hasFile('images') ){
+                $images = $request->file('images');
+                foreach($images as $image){
+                    $imageName = time() . '_' . $image->getClientOriginalName();
+                    $image->move(public_path('uploads'), $imageName);
+                    $imagesName[] = $imageName;
+                }
             }
-
-            $image = Image::create($params);
+            $imageAdd = Image::create(['img1' => $imagesName[0], 'img2' =>$imagesName[1], 'img3' => $imagesName[2], 'img4' => $imagesName[3]]);
         }
 
         return redirect()->route('list-image');
@@ -54,26 +43,15 @@ class ImageController extends Controller
     }
 
     public function handleEdit(Request $request,$id){
-
-            $params = $request->except('_token','_method');
-            if($request->hasFile('img1') && $request->hasFile('img2') && $request->hasFile('img3') && $request->hasFile('img4')){
-                $image1 = $request->file('img1');
-                $image2 = $request->file('img2');
-                $image3 = $request->file('img3');
-                $image4 = $request->file('img4');
-
-                $params['img1'] = time() . '_' . $image1->getClientOriginalName();
-                $params['img2'] = time() . '_' . $image2->getClientOriginalName();
-                $params['img3'] = time() . '_' . $image3->getClientOriginalName();
-                $params['img4'] = time() . '_' . $image4->getClientOriginalName();
-
-                $uploadFile1 = $image1->move(public_path('uploads'),$params['img1']);
-                $uploadFile2 =$image2->move(public_path('uploads',),$params['img2']);
-                $uploadFile3 =$image3->move(public_path('uploads'),$params['img3']);
-                $uploadFile4 =$image4->move(public_path('uploads'),$params['img4']);
+            if($request->hasFile('images') ){
+                $images = $request->file('images');
+                foreach($images as $image){
+                    $imageName = time() . '_' . $image->getClientOriginalName();
+                    $image->move(public_path('uploads'), $imageName);
+                    $imagesName[] = $imageName;
+                }
             }
-            $result = Image::where('id',$id)->update($params);
-
+            $result = Image::where('id',$id)->update(['img1' => $imagesName[0], 'img2' =>$imagesName[1], 'img3' => $imagesName[2], 'img4' => $imagesName[3]]);
 
         return redirect()->route('list-image');
     }

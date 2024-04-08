@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[App\Http\Controllers\RoomController::class,'inforRoom'])->name('infor-room');
-Route::post('/',[App\Http\Controllers\BillController::class,'add'])->name('add-bill');
+ Route::get('/',[App\Http\Controllers\RoomController::class,'inforRoom'])->name('infor-room');
+ Route::post('/',[App\Http\Controllers\BillController::class,'add'])->name('add-bill');
 
 Route::get('home2',function(){
     return view('admin.image.add');

@@ -7,7 +7,7 @@
         @enderror
         <div class="form-group">
             <label for="" class="form-label">Image 1</label>
-            <input type="file" class="form-control" name="img1">
+            <input type="file" class="form-control" name="images[]" accept="image/*">
         </div>
 
         @error('img2')
@@ -15,7 +15,7 @@
         @enderror
         <div class="form-group">
             <label for="" class="form-label">Image 2</label>
-            <input type="file" class="form-control" name="img2">
+            <input type="file" class="form-control" name="images[]" accept="image/*">
         </div>
 
         @error('img3')
@@ -23,7 +23,7 @@
         @enderror
         <div class="form-group">
             <label for="" class="form-label">Image 3</label>
-            <input type="file" class="form-control" name="img3">
+            <input type="file" class="form-control" name="images[]" accept="image/*">
         </div>
 
         @error('img4')
@@ -31,7 +31,7 @@
         @enderror
         <div class="form-group">
             <label for="" class="form-label">Image 4</label>
-            <input type="file" class="form-control" name="img4">
+            <input type="file" class="form-control" name="images[]" accept="image/*">
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
